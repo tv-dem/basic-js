@@ -1,23 +1,32 @@
 const chainMaker = {
+  mas: [],
   getLength() {
-    throw 'Not implemented';
+    return this.mas.length;
     // remove line with error and write your code here
   },
   addLink(value) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    if(value == undefined) value = 'null'
+    this.mas.push(value);
+    return this;
   },
   removeLink(position) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    if(!this.mas.some(arr => arr==this.mas[position - 1])) {
+      this.mas = [];
+      throw new Error();
+    }
+    else{
+    this.mas.splice(--position, 1);
+    return this;
+  }
   },
   reverseChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    this.mas.reverse();
+    return this;
   },
   finishChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    let str = '( '+ this.mas.join(' )~~( ') + ' )'
+    this.mas = [];
+    return str
   }
 };
 
